@@ -1,0 +1,23 @@
+version: '3'
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend
+    image: frontend:v1
+    ports:
+      - 4200:80
+    networks:
+      - app-network
+  backend:
+    build:
+      context: .
+      dockerfile: backend
+    image: backend:v2
+    ports:
+      - 9000:8080
+    networks:
+      - app-network  
+
+networks:
+  app-network:
