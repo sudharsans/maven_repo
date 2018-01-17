@@ -1,6 +1,6 @@
 #!groovy
 
-node {
+pipeline {
 	stage("Build Backend") {
 	     steps {
 	     	  sh "cd ~/app/server/"
