@@ -2,6 +2,9 @@
 
 pipeline {
 	agent any
+	environment {
+        JAVA_HOME    = '/usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.151-5.b12.el7_4.x86_64/bin/'
+    }
 	stages {
 	stage("Build Backend") {
 	     steps {
