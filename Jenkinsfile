@@ -1,14 +1,15 @@
 #!groovy
 
 pipeline {
-	stages("Build Backend") {
+	stages {
+	stage("Build Backend") {
 	     steps {
 	     	  sh "cd ~/app/server/"
 	          sh "./mvnw install"
 	     }
 	}
 
-	stages("Build Frontend") {
+	stage("Build Frontend") {
 	     steps {
 	     	  sh "cd ~/app/client/"
 	          sh "npm install && ng build"
@@ -22,17 +23,18 @@ pipeline {
 	     }
 	}
 
-	stages("Deploy Docker") {
+	stage("Deploy Docker") {
 	     steps {
 	          sh "docker-compose up -d"
 	     }
 	}
 
-	stages("Acceptance test") {
+	stage("Acceptance test") {
 	     steps {
 	          sleep 60
 	          sh "ng e2e"
 	     }
+	}
 	}
 	
 	post {
