@@ -5,22 +5,19 @@ pipeline {
 	stages {
 	stage("Build Backend") {
 	     steps {
-	     	  sh "cd $WORKSPACE/app/server/"
-	          sh "./mvnw install"
+	          sh "cd $WORKSPACE/app/server/ && ./mvnw install"
 	     }
 	}
 
 	stage("Build Frontend") {
 	     steps {
-	     	  sh "cd $WORKSPACE/app/client/"
-	          sh "npm install && ng build"
+	     	  sh "cd $WORKSPACE/app/client/ && npm install && ng build"
 	     }
 	}
 
 	stage("Docker Build") {
 	     steps {
-	      	  sh "cd $WORKSPACE"
-	          sh "docker-compose build"
+	      	  sh "cd $WORKSPACE && docker-compose build"
 	     }
 	}
 
