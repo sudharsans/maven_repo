@@ -21,13 +21,13 @@ pipeline {
 
 	stage("Docker Build") {
 	     steps {
-	      	  sh "cd $WORKSPACE && docker-compose build"
+	      	  sh "cd $WORKSPACE && /usr/local/bin/docker-compose build"
 	     }
 	}
 
 	stage("Deploy Docker") {
 	     steps {
-	          sh "docker-compose up -d"
+	          sh "cd $WORKSPACE && /usr/local/bin/docker-compose up -d"
 	     }
 	}
 
@@ -41,7 +41,7 @@ pipeline {
 	
 	post {
 	     always {
-	          sh "docker-compose down"
+	          sh "cd $WORKSPACE && /usr/local/bin/docker-compose down"
 	     }
 	}
 
