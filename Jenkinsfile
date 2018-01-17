@@ -3,7 +3,9 @@
 pipeline {
 	agent any
 	environment {
-        JAVA_HOME='/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-5.b12.el7_4.x86_64'
+        JAVA_HOME='/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-5.b12.el7_4.x86_64/jre'
+		M2_HOME=/usr/local/maven
+		PATH=${M2_HOME}/bin:${PATH}
     }
 
 	stages {
