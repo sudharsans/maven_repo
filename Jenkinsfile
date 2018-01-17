@@ -19,15 +19,15 @@ pipeline {
 	     }
 	}
 
-	// stage("Docker Build") {
-	//      steps {
-	//       	  sh "cd $WORKSPACE && /usr/local/bin/docker-compose build"
-	//      }
-	// }
+	stage("Docker Build") {
+	     steps {
+	      	  sh "cd $WORKSPACE && sudo /usr/local/bin/docker-compose build"
+	     }
+	}
 
 	stage("Deploy Docker") {
 	     steps {
-	          sh "cd $WORKSPACE && /usr/local/bin/docker-compose up -d"
+	          sh "cd $WORKSPACE && sudo /usr/local/bin/docker-compose up -d"
 	     }
 	}
 
@@ -41,7 +41,7 @@ pipeline {
 	
 	post {
 	     always {
-	          sh "cd $WORKSPACE && /usr/local/bin/docker-compose down"
+	          sh "cd $WORKSPACE && sudo /usr/local/bin/docker-compose down"
 	     }
 	}
 
