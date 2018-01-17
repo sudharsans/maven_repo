@@ -9,7 +9,7 @@ pipeline {
 	stages {
 	stage("Build Backend") {
 	     steps {
-	          sh "cd $WORKSPACE/app/server/ && ./mvnw install"
+	          sh "whoami && cd $WORKSPACE/app/server/ && ./mvnw install"
 	     }
 	}
 
@@ -18,6 +18,12 @@ pipeline {
 	     	  sh "cd $WORKSPACE/app/client/ && npm install && ng build"
 	     }
 	}
+
+	// stage("Docker Build") {
+	//      steps {
+	//       	  sh "cd $WORKSPACE && /usr/local/bin/docker-compose build"
+	//      }
+	// }
 
 	stage("Deploy Docker") {
 	     steps {
