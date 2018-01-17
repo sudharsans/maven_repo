@@ -19,12 +19,6 @@ pipeline {
 	     }
 	}
 
-	stage("Docker Build") {
-	     steps {
-	      	  sh "cd $WORKSPACE && /usr/local/bin/docker-compose build"
-	     }
-	}
-
 	stage("Deploy Docker") {
 	     steps {
 	          sh "cd $WORKSPACE && /usr/local/bin/docker-compose up -d"

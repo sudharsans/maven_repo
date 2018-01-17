@@ -12,6 +12,8 @@ Vagrant.configure("2") do |config|
 		sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
 		sudo yum install jenkins -y
 		sudo service jenkins start
+		sudo usermod -aG docker jenkins
+		sudo service docker restart
 		curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -
 		sudo yum install -y nodejs
 	  SHELL
