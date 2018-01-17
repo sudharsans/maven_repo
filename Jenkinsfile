@@ -1,6 +1,7 @@
 #!groovy
 
 pipeline {
+	agent any
 	stages {
 	stage("Build Backend") {
 	     steps {
@@ -16,7 +17,7 @@ pipeline {
 	     }
 	}
 
-	stages("Docker Build") {
+	stage("Docker Build") {
 	     steps {
 	      	  sh "cd ~/"
 	          sh "docker-compose build"
