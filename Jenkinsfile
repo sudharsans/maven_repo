@@ -1,4 +1,5 @@
 #!groovy
+// testing the build process
 
 pipeline {
 	agent any
@@ -9,7 +10,7 @@ pipeline {
 	stages {
 	stage("Build Backend") {
 	     steps {
-	          sh "whoami && cd $WORKSPACE/app/server/ && ./mvnw install"
+	          sh "cd $WORKSPACE/app/server/ && ./mvnw install"
 	     }
 	}
 
